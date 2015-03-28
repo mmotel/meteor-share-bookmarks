@@ -1,0 +1,54 @@
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ShareBookmarks</title>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+</head>
+<body>
+  {{> header}}
+
+  {{> welcome}}
+
+  {{> content}}
+
+  {{> footer}}
+</body>
+
+<template name="header">
+  <div id="header-wrapper">
+    <div id="header" class="container">
+      <!-- Header -->
+      <h1>Share<span class="pink">Bookmarks</span></h1>
+      <!-- Nav -->
+      <nav>
+        <ul class="nav nav-pills">
+          <li role="presentation"><a href="#">Home</a></li>
+          <li role="presentation"><a href="#">My Categories</a></li>
+          <li role="presentation"><a href="#">Add Category</a></li>
+          <li role="presentation"><a href="#">Add Bookmark</a></li>
+          <li role="presentation"><a href="#">Logout</a></li>
+          <li role="presentation"><a href="#">Login</a></li>
+          <li role="presentation"><a href="#">Register</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</template>
+
+<template name="footer">
+  <!-- Footer -->
+    <div id="footer-wrapper">
+      <div id="footer" class="container">
+        <div id="footer-body">
+          <ul class="list-inline">
+            <li>&copy; ShareBookmarks. All right reserved.</li>
+            <li>Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+</template>
