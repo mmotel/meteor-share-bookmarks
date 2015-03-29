@@ -7,4 +7,5 @@ Meteor: Share Bookmarks - Aplikacja na potrzeby pracy magisterskiej
 ```sh
 meteor add iron:router
 meteor add accounts-password
+meteor remove insecure autopublish
 ```
