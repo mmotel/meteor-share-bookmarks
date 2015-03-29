@@ -1,0 +1,18 @@
+<template name="deleteCategory">
+    <!-- Main -->
+    <div id="main-wrapper">
+      <div id="main" class="container">
+        <h2>Delete Category: {{ category.name }}</h2>
+
+        <div class="alert alert-danger" role="alert">
+          <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+          <span>Category will be deleted permanently. This operation cannot be undone.</span>
+        </div>
+        
+        <p> <label>Description:</label> {{ category.description }} </p>
+
+          <a href="/categories" class="btn btn-dark btn-lg btn-vlg">Cancel</a>
+          <button type="button" class="btn btn-pink btn-lg btn-vlg submit">Delete Category</button>
+      </div>
+    </div>
+</template>

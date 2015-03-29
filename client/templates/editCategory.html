@@ -1,0 +1,28 @@
+<template name="editCategory">
+    <!-- Main -->
+    <div id="main-wrapper">
+      <div id="main" class="container">
+        <h2>Edit Category: {{ category.name }}</h2>
+
+        <div class="alert alert-danger hide" role="alert">
+          <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+          <span>Name size should be between 6 and 32.</span>
+        </div>
+
+        <form>
+          <div class="form-group">
+            <label for="edit-category-name">Name</label>
+            <input type="text" class="form-control input-lg" id="edit-category-name"
+              placeholder="Category Name" value="{{ category.name }}">
+          </div>
+          <div class="form-group">
+            <label for="edit-category-desc">Description</label>
+            <input type="text" class="form-control input-lg" id="edit-category-desc"
+              placeholder="Category Description" value="{{ category.description }}">
+          </div>
+          <a href="/categories" class="btn btn-dark btn-lg btn-vlg">Cancel</a>
+          <button type="submit" class="btn btn-pink btn-lg btn-vlg submit">Save Changes</button>
+        </form>
+      </div>
+    </div>
+</template>

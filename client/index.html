@@ -3,10 +3,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ShareBookmarks</title>
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/style.css" rel="stylesheet">
-  <script src="js/jquery.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
+  <link href="http://localhost:3000/css/bootstrap.min.css" rel="stylesheet">
+  <link href="http://localhost:3000/css/style.css" rel="stylesheet">
+  <script src="http://localhost:3000/js/jquery.min.js"></script>
+  <script src="http://localhost:3000/js/bootstrap.min.js"></script>
 </head>
 <body>
 </body>
@@ -29,7 +29,7 @@
         <ul class="nav nav-pills">
           <li role="presentation"><a href="/">Home</a></li>
           {{#if currentUser}}
-          <li role="presentation"><a href="/">My Categories</a></li>
+          <li role="presentation"><a href="/categories">My Categories</a></li>
           <li role="presentation"><a href="/categories/add">Add Category</a></li>
           <li role="presentation"><a href="/bookmarks/add">Add Bookmark</a></li>
           <li id="logout" role="presentation"><a href="#">Logout</a></li>
