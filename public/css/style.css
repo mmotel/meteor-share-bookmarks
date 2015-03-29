@@ -217,7 +217,7 @@ nav > ul > li > a:hover {
   margin: 30px auto 0 auto;
 }
 
-#intro-actions button {
+#intro-actions .btn {
   width: 30ex;
 }
 

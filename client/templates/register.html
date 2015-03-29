@@ -1,0 +1,31 @@
+<template name="register">
+    <!-- Main -->
+    <div id="main-wrapper">
+      <div id="main" class="container">
+        <h2>Create Account</h2>
+
+        <div class="alert alert-danger hide" role="alert">
+          <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+          <span>Email address is invalid.</span>
+          <span>Password size should be between 6 and 32.</span>
+        </div>
+
+        <form>
+          <div class="form-group">
+            <label for="register-username">Username</label>
+            <input type="text" class="form-control input-lg" id="register-username" placeholder="Username">
+          </div>
+          <div class="form-group">
+            <label for="register-email">Email address</label>
+            <input type="email" class="form-control input-lg" id="register-email" placeholder="Email address">
+          </div>
+          <div class="form-group">
+            <label for="register-password">Password</label>
+            <input type="password" class="form-control input-lg" id="register-password" placeholder="Password">
+          </div>
+          <a href="/" class="btn btn-dark btn-lg btn-vlg">Cancel</a>
+          <button type="submit" class="btn btn-pink btn-lg btn-vlg submit">Create Account</button>
+        </form>
+      </div>
+    </div>
+</template>

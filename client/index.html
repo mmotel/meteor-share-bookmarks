@@ -9,14 +9,15 @@
   <script src="js/bootstrap.min.js"></script>
 </head>
 <body>
+</body>
+
+<template name="appLayout">
   {{> header}}
 
-  {{> welcome}}
-
-  {{> content}}
+  {{> yield}}
 
   {{> footer}}
-</body>
+</template>
 
 <template name="header">
   <div id="header-wrapper">
@@ -26,13 +27,16 @@
       <!-- Nav -->
       <nav>
         <ul class="nav nav-pills">
-          <li role="presentation"><a href="#">Home</a></li>
-          <li role="presentation"><a href="#">My Categories</a></li>
-          <li role="presentation"><a href="#">Add Category</a></li>
-          <li role="presentation"><a href="#">Add Bookmark</a></li>
-          <li role="presentation"><a href="#">Logout</a></li>
-          <li role="presentation"><a href="#">Login</a></li>
-          <li role="presentation"><a href="#">Register</a></li>
+          <li role="presentation"><a href="/">Home</a></li>
+          {{#if currentUser}}
+          <li role="presentation"><a href="/">My Categories</a></li>
+          <li role="presentation"><a href="/categories/add">Add Category</a></li>
+          <li role="presentation"><a href="/bookmarks/add">Add Bookmark</a></li>
+          <li id="logout" role="presentation"><a href="#">Logout</a></li>
+          {{else}}
+          <li role="presentation"><a href="/login">Login</a></li>
+          <li role="presentation"><a href="/register">Register</a></li>
+          {{/if}}
         </ul>
       </nav>
     </div>
