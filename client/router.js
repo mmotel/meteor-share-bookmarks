@@ -6,9 +6,22 @@
 // });
 
 // /
-Router.route('/', function () {
-  this.layout('AppLayout');
-  if(Meteor.user()){
+Router.route('/', {
+  loadingTemplate: 'loading',
+  waitOn: function () {
+    return Meteor.subscribe('categories');
+  },
+  onBeforeAction: function () {
+    if(!Meteor.user()){
+      this.layout('AppLayout');
+      this.render('welcome');
+    }
+    else {
+      this.next();
+    }
+  },
+  action: function () {
+    this.layout('AppLayout');
     this.render('showCategories', {
       'data': {
         'Categories': function () {
@@ -17,34 +30,43 @@ Router.route('/', function () {
       }
     });
   }
-  else{
-    this.render('welcome');
-  }
 });
 
 // /register
-Router.route('/register', function () {
-  this.layout('AppLayout');
-  if(! Meteor.user()){
+Router.route('/register', {
+  loadingTemplate: 'loading',
+  onBeforeAction: function () {
+    if(Meteor.user()){
+      Router.go('/');
+    }
+    else {
+      this.next();
+    }
+  },
+  action: function () {
+    this.layout('AppLayout');
     this.render('register');
-  }
-  else {
-    Router.go('/');
   }
 });
 
 // /login
-Router.route('/login', function () {
-  this.layout('AppLayout');
-  if(! Meteor.user()){
+Router.route('/login', {
+  loadingTemplate: 'loading',
+  onBeforeAction: function () {
+    if(Meteor.user()){
+      Router.go('/');
+    }
+    else {
+      this.next();
+    }
+  },
+  action: function () {
+    this.layout('AppLayout');
     this.render('login');
-  }
-  else {
-    Router.go('/');
   }
 });
 
-// /categories
+// /categories TODO
 Router.route('/categories', function () {
   this.layout('AppLayout');
   if(Meteor.user()){
@@ -62,48 +84,70 @@ Router.route('/categories', function () {
 });
 
 // /categories/add
-Router.route('/categories/add', function () {
-  this.layout('AppLayout');
-  if(Meteor.user()){
+Router.route('/categories/add', {
+  loadingTemplate: 'loading',
+  onBeforeAction: function () {
+    if(!Meteor.user()){
+      Router.go('/');
+    }
+    else {
+      this.next();
+    }
+  },
+  action: function () {
+    this.layout('AppLayout');
     this.render('addCategory');
-  }
-  else{
-    Router.go('/');
   }
 });
 
 // /categories/edit
-Router.route('/categories/edit/:catId', function () {
-  var catId = this.params.catId;
-  this.layout('AppLayout');
-  if(Meteor.user()){
+Router.route('/categories/edit/:catId', {
+  loadingTemplate: 'loading',
+  waitOn: function () {
+    return Meteor.subscribe('categories', {'_id': this.params.catId});
+  },
+  onBeforeAction: function () {
+    if(!Meteor.user()){
+      Router.go('/');
+    }
+    else {
+      this.next();
+    }
+  },
+  action: function () {
+    this.layout('AppLayout');
     this.render('editCategory', {
       'data': {
         'category': function () {
-          return Category.findOne({'_id': catId});
+          return Category.findOne();
         }
       }
     });
-  }
-  else{
-    Router.go('/');
   }
 });
 
 // /categories/delete
-Router.route('/categories/delete/:catId', function () {
-  var catId = this.params.catId;
-  this.layout('AppLayout');
-  if(Meteor.user()){
+Router.route('/categories/delete/:catId', {
+  loadingTemplate: 'loading',
+  waitOn: function () {
+    return Meteor.subscribe('categories', {'_id': this.params.catId});
+  },
+  onBeforeAction: function () {
+    if(!Meteor.user()){
+      Router.go('/');
+    }
+    else {
+      this.next();
+    }
+  },
+  action: function () {
+    this.layout('AppLayout');
     this.render('deleteCategory', {
       'data': {
         'category': function () {
-          return Category.findOne({'_id': catId});
+          return Category.findOne();
         }
       }
     });
-  }
-  else{
-    Router.go('/');
   }
 });
