@@ -11,7 +11,11 @@ Meteor.publish('categories',
       return Category.find({'_id': args._id});
     }
     else if(args.owner){
-      return Category.find({'owner': args._owner});
+      return Category.find({'owner': args.owner});
+    }
+    else if(args.username){
+      var user = Meteor.users.findOne({'username': args.username});
+      return Category.find({'owner': user._id});
     }
     else { //gtfo
       return null;
@@ -35,3 +39,8 @@ Meteor.publish('bookmarks',
     }
   }
 );
+
+Meteor.publish('users',
+  function () {
+    return Meteor.users.find({}, {fields: {'_id': 1, 'username': 1}});
+});

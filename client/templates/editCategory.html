@@ -20,7 +20,7 @@
             <input type="text" class="form-control input-lg" id="edit-category-desc"
               placeholder="Category Description" value="{{ category.description }}">
           </div>
-          <a href="/categories" class="btn btn-dark btn-lg btn-vlg">Cancel</a>
+          <a href="/{{ currentUser.username }}" class="btn btn-dark btn-lg btn-vlg">Cancel</a>
           <button type="submit" class="btn btn-pink btn-lg btn-vlg submit">Save Changes</button>
         </form>
       </div>

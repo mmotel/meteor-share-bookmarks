@@ -24,9 +24,8 @@ Router.route('/', {
     this.layout('AppLayout');
     this.render('showCategories', {
       'data': {
-        'Categories': function () {
-          return Category.find();
-        }
+        'User': Meteor.user(),
+        'Categories': Category.find()
       }
     });
   }
@@ -66,20 +65,23 @@ Router.route('/login', {
   }
 });
 
-// /categories TODO
-Router.route('/categories', function () {
-  this.layout('AppLayout');
-  if(Meteor.user()){
-    this.render('showCategories',{
+// /categories
+Router.route('/:username', {
+  loadingTemplate: 'loading',
+  waitOn: function () {
+    return Meteor.subscribe('categories', {'username': this.params.username});
+  },
+  // onBeforeAction: function () {
+  //     this.next();
+  // },
+  action: function () {
+    this.layout('AppLayout');
+    this.render('showCategories', {
       'data': {
-        'Categories': function () {
-          return Category.find();
-        }
+        'User': Meteor.users.findOne({'username': this.params.username}),
+        'Categories': Category.find()
       }
     });
-  }
-  else{
-    Router.go('/');
   }
 });
 
@@ -118,9 +120,7 @@ Router.route('/categories/edit/:catId', {
     this.layout('AppLayout');
     this.render('editCategory', {
       'data': {
-        'category': function () {
-          return Category.findOne();
-        }
+        'category': Category.findOne()
       }
     });
   }
@@ -144,9 +144,7 @@ Router.route('/categories/delete/:catId', {
     this.layout('AppLayout');
     this.render('deleteCategory', {
       'data': {
-        'category': function () {
-          return Category.findOne();
-        }
+        'category': Category.findOne()
       }
     });
   }
