@@ -1,0 +1,30 @@
+<template name="addBookmark">
+    <!-- Main -->
+    <div id="main-wrapper">
+      <div id="main" class="container">
+        <h2>Add Bookmark: {{ Category.name }}</h2>
+
+        <div class="alert alert-danger hide" role="alert">
+          <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+          <span>Name size should be between 6 and 32.</span>
+        </div>
+
+        <form>
+          <div class="form-group">
+            <label for="add-category-name">Name</label>
+            <input type="text" class="form-control input-lg" id="add-bookmark-name" placeholder="Bookmark Name">
+          </div>
+          <div class="form-group">
+            <label for="add-category-name">Address (URL)</label>
+            <input type="url" class="form-control input-lg" id="add-bookmark-url" placeholder="Bookmark Address (URL)">
+          </div>
+          <div class="form-group">
+            <label for="add-category-desc">Description</label>
+            <input type="text" class="form-control input-lg" id="add-bookmark-desc" placeholder="Bookmark Description">
+          </div>
+          <a href="/{{ currentUser.username }}" class="btn btn-dark btn-lg btn-vlg">Cancel</a>
+          <button type="submit" class="btn btn-pink btn-lg btn-vlg submit">Add Bookmark</button>
+        </form>
+      </div>
+    </div>
+</template>

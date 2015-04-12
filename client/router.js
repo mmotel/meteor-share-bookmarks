@@ -149,3 +149,49 @@ Router.route('/categories/delete/:catId', {
     });
   }
 });
+
+// /bookmarks
+Router.route('/:username/:categoryId', {
+  loadingTemplate: 'loading',
+  waitOn: function () {
+    return [ Meteor.subscribe('categories', {'_id': this.params.categoryId}),
+      Meteor.subscribe('bookmarks', {'category': this.params.categoryId}) ];
+  },
+  // onBeforeAction: function () {
+  //     this.next();
+  // },
+  action: function () {
+    this.layout('AppLayout');
+    this.render('showBookmarks', {
+      'data': {
+        'User': Meteor.users.findOne({'username': this.params.username}),
+        'Category': Category.findOne(),
+        'Bookmarks': Bookmark.find()
+      }
+    });
+  }
+});
+
+// /bookmarks/add
+Router.route('/bookmarks/add/:categoryId', {
+  loadingTemplate: 'loading',
+  waitOn: function () {
+    return Meteor.subscribe('categories', {'_id': this.params.categoryId});
+  },
+  onBeforeAction: function () {
+    if(!Meteor.user()){
+      Router.go('/');
+    }
+    else {
+      this.next();
+    }
+  },
+  action: function () {
+    this.layout('AppLayout');
+    this.render('addBookmark', {
+      'data': {
+        'Category': Category.findOne()
+      }
+    });
+  }
+});
