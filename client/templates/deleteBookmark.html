@@ -1,0 +1,23 @@
+<template name="deleteBookmark">
+    <!-- Main -->
+    <div id="main-wrapper">
+      <div id="main" class="container">
+        <h2>Delete Category:
+          <span class="pink">{{ category.name }}</span>/{{ bookmark.name }}
+        </h2>
+
+        <div class="alert alert-danger" role="alert">
+          <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+          <span>Bookmark will be deleted permanently. This operation cannot be undone.</span>
+        </div>
+
+        <p> <label>Address (URL):</label>
+          <a href="{{ bookmark.url }}" target="_blank">{{ bookmark.url }}</a>
+        </p>
+        <p> <label>Description:</label> {{ bookmark.description }} </p>
+
+          <a href="/{{ currentUser.username }}/{{ category._id }}" class="btn btn-dark btn-lg btn-vlg">Cancel</a>
+          <button type="button" class="btn btn-pink btn-lg btn-vlg submit">Delete Category</button>
+      </div>
+    </div>
+</template>

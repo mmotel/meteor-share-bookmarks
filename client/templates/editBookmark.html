@@ -1,0 +1,35 @@
+<template name="editBookmark">
+    <!-- Main -->
+    <div id="main-wrapper">
+      <div id="main" class="container">
+        <h2>Edit Bookmark:
+          <span class="pink">{{ category.name }}</span>/{{ bookmark.name }}
+        </h2>
+
+        <div class="alert alert-danger hide" role="alert">
+          <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+          <span>Name size should be between 6 and 32.</span>
+        </div>
+
+        <form>
+          <div class="form-group">
+            <label for="edit-category-name">Name</label>
+            <input type="text" class="form-control input-lg" id="edit-bookmark-name"
+              placeholder="Bookmark Name" value="{{ bookmark.name }}">
+          </div>
+          <div class="form-group">
+            <label for="edit-category-name">Address (URL)</label>
+            <input type="text" class="form-control input-lg" id="edit-bookmark-url"
+              placeholder="Bookmark Address (URL)" value="{{ bookmark.url }}">
+          </div>
+          <div class="form-group">
+            <label for="edit-category-desc">Description</label>
+            <input type="text" class="form-control input-lg" id="edit-bookmark-desc"
+              placeholder="Bookmark Description" value="{{ bookmark.description }}">
+          </div>
+          <a href="/{{ currentUser.username }}/{{ category._id }}" class="btn btn-dark btn-lg btn-vlg">Cancel</a>
+          <button type="submit" class="btn btn-pink btn-lg btn-vlg submit">Save Changes</button>
+        </form>
+      </div>
+    </div>
+</template>

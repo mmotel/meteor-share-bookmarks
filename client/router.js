@@ -195,3 +195,55 @@ Router.route('/bookmarks/add/:categoryId', {
     });
   }
 });
+
+// /bookmarks/edit
+Router.route('/bookmarks/edit/:bookmarkId', {
+  loadingTemplate: 'loading',
+  waitOn: function () {
+    return [ Meteor.subscribe('categories', {'bookmark': this.params.bookmarkId}),
+      Meteor.subscribe('bookmarks', {'_id': this.params.bookmarkId}) ];
+  },
+  onBeforeAction: function () {
+    if(!Meteor.user()){
+      Router.go('/');
+    }
+    else {
+      this.next();
+    }
+  },
+  action: function () {
+    this.layout('AppLayout');
+    this.render('editBookmark', {
+      'data': {
+        'category': Category.findOne(),
+        'bookmark': Bookmark.findOne()
+      }
+    });
+  }
+});
+
+// /bookmarks/delete
+Router.route('/bookmarks/delete/:bookmarkId', {
+  loadingTemplate: 'loading',
+  waitOn: function () {
+    return [ Meteor.subscribe('categories', {'bookmark': this.params.bookmarkId}),
+      Meteor.subscribe('bookmarks', {'_id': this.params.bookmarkId}) ];
+  },
+  onBeforeAction: function () {
+    if(!Meteor.user()){
+      Router.go('/');
+    }
+    else {
+      this.next();
+    }
+  },
+  action: function () {
+    this.layout('AppLayout');
+    this.render('deleteBookmark', {
+      'data': {
+        'category': Category.findOne(),
+        'bookmark': Bookmark.findOne()
+      }
+    });
+  }
+});

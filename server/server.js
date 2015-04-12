@@ -17,6 +17,10 @@ Meteor.publish('categories',
       var user = Meteor.users.findOne({'username': args.username});
       return Category.find({'owner': user._id});
     }
+    else if(args.bookmark){
+      var bookmark = Bookmark.findOne({'_id': args.bookmark});
+      return Category.find({'_id': bookmark.category});
+    }
     else { //gtfo
       return null;
     }
