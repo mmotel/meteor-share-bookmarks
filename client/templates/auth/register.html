@@ -4,20 +4,40 @@
       <div id="main" class="container">
         <h2>Create Account</h2>
 
-        <div class="alert alert-danger hide" role="alert">
-          <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-          <span>Email address is invalid.</span>
-          <span>Password size should be between 6 and 32.</span>
-        </div>
-
         <form>
+          <div class="alert alert-danger hide" id="register-error-username-used" role="alert">
+            <p>
+              <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+              This username is already used.
+            </p>
+          </div>
+          <div class="alert alert-danger hide" id="register-error-username-valid" role="alert">
+            <p>
+              <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+              Username size should be between 3 and 16. It can lowercase contain letters, digits, - and _.
+            </p>
+          </div>
           <div class="form-group">
             <label for="register-username">Username</label>
             <input type="text" class="form-control input-lg" id="register-username" placeholder="Username">
           </div>
+
+          <div class="alert alert-danger hide" id="register-error-email" role="alert">
+            <p>
+              <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+              Email address is invalid.
+            </p>
+          </div>
           <div class="form-group">
             <label for="register-email">Email address</label>
             <input type="email" class="form-control input-lg" id="register-email" placeholder="Email address">
+          </div>
+
+          <div class="alert alert-danger hide" id="register-error-password" role="alert">
+            <p>
+              <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+              Password size should be between 6 and 18. It can containg letters, digits - and _.
+            </p>
           </div>
           <div class="form-group">
             <label for="register-password">Password</label>
