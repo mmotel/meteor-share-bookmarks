@@ -109,7 +109,8 @@ Router.route('/categories/edit/:catId', {
     return Meteor.subscribe('categories', {'_id': this.params.catId});
   },
   onBeforeAction: function () {
-    if(!Meteor.user()){
+    if(!Meteor.user() || !Category.findOne() ||
+     Meteor.user()._id !== Category.findOne().owner){
       Router.go('/');
     }
     else {
@@ -133,7 +134,8 @@ Router.route('/categories/delete/:catId', {
     return Meteor.subscribe('categories', {'_id': this.params.catId});
   },
   onBeforeAction: function () {
-    if(!Meteor.user()){
+    if(!Meteor.user() || !Category.findOne() ||
+     Meteor.user()._id !== Category.findOne().owner){
       Router.go('/');
     }
     else {
@@ -179,7 +181,8 @@ Router.route('/bookmarks/add/:categoryId', {
     return Meteor.subscribe('categories', {'_id': this.params.categoryId});
   },
   onBeforeAction: function () {
-    if(!Meteor.user()){
+    if(!Meteor.user() || !Category.findOne() ||
+     Meteor.user()._id !== Category.findOne().owner){
       Router.go('/');
     }
     else {
@@ -204,7 +207,9 @@ Router.route('/bookmarks/edit/:bookmarkId', {
       Meteor.subscribe('bookmarks', {'_id': this.params.bookmarkId}) ];
   },
   onBeforeAction: function () {
-    if(!Meteor.user()){
+    if(!Meteor.user() || !Category.findOne() || !Bookmark.findOne() ||
+     Meteor.user()._id !== Category.findOne().owner ||
+     Meteor.user()._id !== Bookmark.findOne().owner){
       Router.go('/');
     }
     else {
@@ -230,7 +235,9 @@ Router.route('/bookmarks/delete/:bookmarkId', {
       Meteor.subscribe('bookmarks', {'_id': this.params.bookmarkId}) ];
   },
   onBeforeAction: function () {
-    if(!Meteor.user()){
+    if(!Meteor.user() || !Category.findOne() || !Bookmark.findOne() ||
+     Meteor.user()._id !== Category.findOne().owner ||
+     Meteor.user()._id !== Bookmark.findOne().owner){
       Router.go('/');
     }
     else {
