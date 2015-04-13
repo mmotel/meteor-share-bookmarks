@@ -11,7 +11,7 @@ Template.header.events({
       }
     });
   }
-})
+});
 // register
 Template.register.events({
   'submit form, click .submit': function (event, template) {
@@ -27,15 +27,15 @@ Template.register.events({
         'profile': {
           'name': username
         }
-    }, function (error) {
-      if(error){
-        console.log(error);
-      }
-      else {
-        Router.go('/');
-      }
-    })
-
+      },
+      function (error) {
+        if(error){
+          console.log(error);
+        }
+        else {
+          Router.go('/');
+        }
+      });
   }
 });
 // login

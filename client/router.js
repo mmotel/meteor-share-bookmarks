@@ -1,10 +1,3 @@
-// Router.route('/', function () {
-//   this.layout('AppLayout');
-//   this.render('template', {
-//     data: function () { return {}; }
-//   });
-// });
-
 // /
 Router.route('/', {
   loadingTemplate: 'loading',
@@ -71,9 +64,6 @@ Router.route('/:username', {
   waitOn: function () {
     return Meteor.subscribe('categories', {'username': this.params.username});
   },
-  // onBeforeAction: function () {
-  //     this.next();
-  // },
   action: function () {
     this.layout('AppLayout');
     this.render('showCategories', {
@@ -159,9 +149,6 @@ Router.route('/:username/:categoryId', {
     return [ Meteor.subscribe('categories', {'_id': this.params.categoryId}),
       Meteor.subscribe('bookmarks', {'category': this.params.categoryId}) ];
   },
-  // onBeforeAction: function () {
-  //     this.next();
-  // },
   action: function () {
     this.layout('AppLayout');
     this.render('showBookmarks', {

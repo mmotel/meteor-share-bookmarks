@@ -17,8 +17,7 @@ Template.addCategory.events({
           console.log(result);
           Router.go('/' + Meteor.user().username);
         }
-      }
-    );
+      });
   }
 });
 
@@ -43,8 +42,7 @@ Template.editCategory.events({
           console.log(result);
           Router.go('/' + Meteor.user().username);
         }
-      }
-    );
+      });
   }
 });
 
@@ -65,7 +63,6 @@ Template.deleteCategory.events({
           console.log(result);
           Router.go('/' + Meteor.user().username);
         }
-      }
-    );
+      });
   }
 });

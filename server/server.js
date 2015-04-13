@@ -21,7 +21,7 @@ Meteor.publish('categories',
       var bookmark = Bookmark.findOne({'_id': args.bookmark});
       return Category.find({'_id': bookmark.category});
     }
-    else { //gtfo
+    else {
       return null;
     }
   }
@@ -38,7 +38,7 @@ Meteor.publish('bookmarks',
     else if(args.category){
       return Bookmark.find({'category': args.category});
     }
-    else { //gtfo
+    else {
       return null;
     }
   }

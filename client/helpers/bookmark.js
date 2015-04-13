@@ -21,8 +21,7 @@ Template.addBookmark.events({
           console.log(result);
           Router.go('/' + Meteor.user().username + '/' + category);
         }
-      }
-    );
+      });
   }
 });
 
@@ -49,8 +48,7 @@ Template.editBookmark.events({
           console.log(result);
           Router.go('/' + Meteor.user().username + '/' + result.category);
         }
-      }
-    );
+      });
   }
 });
 
@@ -71,7 +69,6 @@ Template.deleteBookmark.events({
           console.log(result);
           Router.go('/' + Meteor.user().username + '/' + result.category);
         }
-      }
-    );
+      });
   }
 });
