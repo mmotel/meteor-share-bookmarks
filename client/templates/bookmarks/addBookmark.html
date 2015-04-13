@@ -2,7 +2,11 @@
     <!-- Main -->
     <div id="main-wrapper">
       <div id="main" class="container">
-        <h2>Add Bookmark: {{ Category.name }}</h2>
+        <h2>Add Bookmark
+          {{#if category }}
+          : {{ category.name }}
+          {{/if}}
+        </h2>
 
         <div class="alert alert-danger hide" role="alert">
           <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
@@ -14,6 +18,17 @@
             <label for="add-bookmark-name">Name</label>
             <input type="text" class="form-control input-lg" id="add-bookmark-name" placeholder="Bookmark Name">
           </div>
+          {{#if category }}
+          {{else}}
+          <div class="form-group">
+            <label for="add-bookmark-category">Category</label>
+            <select class="form-control input-lg"  id="add-bookmark-category">
+              {{#each categories}}
+              <option value="{{_id}}">{{name}}</option>
+              {{/each}}
+            </select>
+          </div>
+          {{/if}}
           <div class="form-group">
             <label for="add-bookmark-url">Address (URL)</label>
             <input type="url" class="form-control input-lg" id="add-bookmark-url" placeholder="Bookmark Address (URL)">

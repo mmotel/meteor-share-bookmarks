@@ -162,6 +162,31 @@ Router.route('/:username/:categoryId', {
 });
 
 // /bookmarks/add
+Router.route('/bookmarks/add/all', {
+  loadingTemplate: 'loading',
+  waitOn: function () {
+    return Meteor.subscribe('categories');
+  },
+  onBeforeAction: function () {
+    if(!Meteor.user()){
+      Router.go('/');
+    }
+    else {
+      this.next();
+    }
+  },
+  action: function () {
+    this.layout('AppLayout');
+    this.render('addBookmark', {
+      'data': {
+        'category': null,
+        'categories': Category.find()
+      }
+    });
+  }
+});
+
+// /bookmarks/add
 Router.route('/bookmarks/add/:categoryId', {
   loadingTemplate: 'loading',
   waitOn: function () {
@@ -180,7 +205,8 @@ Router.route('/bookmarks/add/:categoryId', {
     this.layout('AppLayout');
     this.render('addBookmark', {
       'data': {
-        'Category': Category.findOne()
+        'category': Category.findOne(),
+        'categories': Category.find()
       }
     });
   }

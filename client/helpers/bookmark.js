@@ -1,7 +1,8 @@
 Template.addBookmark.events({
   'submit form, click .submit': function (event, template) {
     event.preventDefault();
-    var category = Router.current().params.categoryId;
+    var category = Router.current().params.categoryId ||
+     template.find('#add-bookmark-category').value;
     var name = template.find('#add-bookmark-name').value;
     var url  = template.find('#add-bookmark-url').value;
     var desc = template.find('#add-bookmark-desc').value;
